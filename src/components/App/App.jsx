@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 function App() {
@@ -12,6 +13,8 @@ function App() {
     getOrder();
   }, []);
 
+  const dispatch = useDispatch();
+
 //This function returns the data from the pizza table in the db. basically the menu
 //it will then be rendered to the dom below using map
   const getMenu = () => {
@@ -19,6 +22,7 @@ function App() {
       method: 'GET',
       url: '/api/pizza'
     }).then( (response) => {
+        dispatch( { type: 'setPizzaMenu', payload: response.data } );
         console.log( 'back from getPizza with:', response );
     }).catch( (err) => { 
         console.log(err);
