@@ -10,7 +10,7 @@ const pizzaMenu =( state=[], action ) =>{
     console.log('in pizzaMenu reducer:', action );
     if( action.type === 'setPizzaMenu' ){
         console.log( 'set pizzaMenu state' );
-        state = [ action.payload ];
+        state = action.payload;
     }
     console.log(state);
     return state;
