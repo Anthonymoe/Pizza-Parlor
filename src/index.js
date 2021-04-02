@@ -6,7 +6,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
-const pizzaMenu =( state=[], action ) =>{
+const pizzaMenu =( state=[], action ) => {
     console.log('in pizzaMenu reducer:', action );
     if( action.type === 'setPizzaMenu' ){
         console.log( 'set pizzaMenu state' );
@@ -16,9 +16,20 @@ const pizzaMenu =( state=[], action ) =>{
     return state;
 }//end pizzaMenu reducer
 
+const currentOrder = ( state= [], action ) => {
+    console.log('in currentOrder reducer:', action );
+    if( action.type === 'setCurrentOrder' ){
+        console.log( ' set currentOrder state' );
+        state = [...action.payload];
+    }
+    console.log(state);
+    return state;
+}//end currentOrder
+
 const store = createStore(
     combineReducers({
-        pizzaMenu: pizzaMenu
+        pizzaMenu: pizzaMenu,
+        currentOrder: currentOrder
     }),
     applyMiddleware( logger )
 )//end of store 

@@ -10,11 +10,14 @@ function SelectPizza(){
     return(
         <>
             <h2>Menu</h2>
-            <ul>
+            <div>
                 {pizza.map( (item) => 
                     <SelectPizzaItem item={item} key={item.id} />
                 )}
-            </ul>
+            </div>
+            <div>
+                <button>NEXT</button>
+            </div>
         </>
     )
 
